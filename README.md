@@ -1,8 +1,8 @@
 # Datentricks
 
-Ein paar Tricks und Tipps rund um's Datenputzen
+## Ein paar Tricks und Tipps rund um's Datenputzen ##
 
-Für das NDR-Projekt #WasAtmestDu haben wir Menschen in Norddeutschland gebeten, Stickstoffoxid-Sammelröhrchen aufzuängen. Insgesamt haben sich über 5000 Menschen über ein Online-Forumlar beworben. 
+Für das NDR-Projekt #WasAtmestDu haben wir Menschen in Norddeutschland gebeten, Stickstoffoxid-Sammelröhrchen aufzuhängen. Insgesamt haben sich über 5000 Menschen über ein Online-Forumlar beworben. 
 
 In dem Formular wurde nach dem Messort gefragt. Allerdings: Manche Menschen haben dort eine Adresse eingegeben, andere Geo-Koordinaten. Das sah dann so aus (die Adressdaten wurden von mir für dieses Tutorial anonymisiert).
 
@@ -14,4 +14,6 @@ Das geht am besten mit OpenRefine (http://openrefine.org/). OpenRefine läuft lo
 Nachdem die Excel-Tabelle geladen wurde, kann man nun die Daten "putzen".
 Dafür als erstes auf den kleinen Drop-Down-Knopf links neben der Spalte "Ort" klicken. Dann "Edit column" > "Add column based on this column..." auswählen. 
 
-![OpenRefine](http://datenjournalismus.eugithub_pics/openrefine.gif)
+![OpenRefine](http://datenjournalismus.eu/github_pics/openrefine.gif)
+
+Nun lassen sich Funktionen in der OpenRefine-Sprache GREL eingeben. Eine Übersicht gibt es unter anderem hier (https://github.com/OpenRefine/OpenRefine/wiki/Documentation-For-Users#reference) - allerdings ist die Übersetzung der Beispiele für die eigene Anwendung nicht immer einfach. 
