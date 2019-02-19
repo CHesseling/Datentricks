@@ -12,8 +12,20 @@ Das Ziel: Eine Spalte, in der valide Geo-Informationen stehen. Deshalb müssen z
 Das geht am besten mit OpenRefine (http://openrefine.org/). OpenRefine läuft lokal auf dem eigenen Rechner und nutzt den Browser als Interface.
 
 Nachdem die Excel-Tabelle geladen wurde, kann man nun die Daten "putzen".
-Dafür als erstes auf den kleinen Drop-Down-Knopf links neben der Spalte "Ort" klicken. Dann "Edit column" > "Add column based on this column..." auswählen. 
+
+### Adressen von Lat/Long-Daten trennen ###
+
+Dafür als erstes auf den kleinen Drop-Down-Knopf links neben der Spalte "Ort" klicken. Dann "Edit column" > "Add column based on this column..." auswählen. Wir erstellen also eine neue Spalte, die auf unserer Spalte "Ort" basiert.
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/openrefine.gif)
 
 Nun lassen sich Funktionen in der OpenRefine-Sprache GREL eingeben. Eine Übersicht gibt es unter anderem hier (https://github.com/OpenRefine/OpenRefine/wiki/Documentation-For-Users#reference) - allerdings ist die Übersetzung der Beispiele für die eigene Anwendung nicht immer einfach. 
+
+Zunächst muss man in dem Fenster der neuen Spalte einen Namen geben - in unserem Fall zum Beispiel "latlong".
+
+Mit diesem GREL-Schnipsel lassen sich die Lat/Long-Daten in eine neue Spalte kopieren:
+```GREL
+if(value.contains(/^(\d+(\.\d+)?),\s*(\d+(\.\d+))/),value,"")
+```
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_21h52_13.png)
