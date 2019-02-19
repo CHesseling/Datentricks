@@ -29,3 +29,27 @@ if(value.contains(/^(\d+(\.\d+)?),\s*(\d+(\.\d+))/),value,"")
 ```
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_21h52_13.png)
+
+Nachdem wir "Ok" geklickt haben, erscheint eine neue Spalte.
+
+Jetzt kann man das Ganze nochmal wiederholen - wir nennen die neue Spalte "adresse". Und wir vertauschen die letzten beiden Ausdrücke in der GREL-Funktion:
+
+```GREL
+if(value.contains(/^(\d+(\.\d+)?),\s*(\d+(\.\d+))/),"",value)
+```
+
+Jetzt haben wir zwei saubere Spalten mit den Adressen und den Lat/Long-Angaben.
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_22h07_04.png)
+
+### Adressen geocoden
+
+Im nächsten Schritt müssen wir die Adressen ebenfalls in Lat/Long-Informationen umwandeln. Der Vorgang nennt sich Geocoden. Es gibt unterschiedliche Dienste, die das anbieten, zum Beispiel Google Maps API, OpenStreetMap oder Mapbox.
+
+Es ist relativ einfach, das Ganze mit der Google Maps API zu testen. Allerdings braucht man dafür mittlerweile einen API-Schlüssel. Wie man sich diesen - erstmal kostenlosen -  Schlüssel beschafft, steht hier: https://developers.google.com/maps/documentation/javascript/get-api-key
+
+Zurück in OpenRefine. Diesmal klickt man auf das Drop-Down neben "adresse" und wählt "Edit column" > "Add column by fetching URLs based on column adresse". 
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/openrefine2.gif)
+
+OpenRefine ruft dann quasi für jede Zelle eine URL auf (in diesem Fall die des Geocoders) und speichert die Ausgabe.
