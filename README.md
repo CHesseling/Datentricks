@@ -53,3 +53,14 @@ Zurück in OpenRefine. Diesmal klickt man auf das Drop-Down neben "adresse" und 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/openrefine2.gif)
 
 OpenRefine ruft dann quasi für jede Zelle eine URL auf (in diesem Fall die des Geocoders) und speichert die Ausgabe.
+
+Zunächst muss man wieder den Namen der neuen Spalte bestimmen. Throttle delay kann heruntergesetzt werden auf z.B. 10 Millisekunden. Alle anderen Felder können so bleiben. 
+
+Die GREL-Expression für den Google Geocoder sieht so aus:
+
+```GREL
+'https://maps.googleapis.com/maps/api/geocode/json?' +
+'sensor=false&' + 'address=' + escape(value, 'url') + '&key=HierStehtDeinGoogleMapsAPIKey'
+```
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_22h17_24.png)
