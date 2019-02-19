@@ -30,6 +30,8 @@ if(value.contains(/^(\d+(\.\d+)?),\s*(\d+(\.\d+))/),value,"")
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_21h52_13.png)
 
+Zur Info: Das nennt man eine Regular Expression oder RegEx. RegEx sind *die Hölle*, aber sehr mächtig. Es gibt mehrere Tools, mit denen man RegEx für seine Anwendung testen kann - das Beispiel für unsere Anwendung sieht man hier: https://regex101.com/r/Go3GUs/1 
+
 Nachdem wir "Ok" geklickt haben, erscheint eine neue Spalte.
 
 Jetzt kann man das Ganze nochmal wiederholen - wir nennen die neue Spalte "adresse". Und wir vertauschen die letzten beiden Ausdrücke in der GREL-Funktion:
@@ -64,3 +66,22 @@ Die GREL-Expression für den Google Geocoder sieht so aus:
 ```
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_22h17_24.png)
+
+Nun legt der Geocoder los, und ein paar Minuten später steht das Ergebnis in unserer neuen Spalte "googlemaps".
+Der Geocoder gibt dabei eine soegannte JSON-Struktur zurück, die OpenRefine speichert. Da sind die einzelnen Informationen verschachtelt enthalten:
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-19_22h26_05.png)
+
+Wir interessiern uns ja aber nur für die Lat/Long-Daten des Geocoders. Die können wir aus der JSON-Struktur extrahieren. Und zwar so: 
+
+Den kleinen Drop-Down-Knopf links neben der Spalte "googlemaps" klicken. Dann "Edit column" > "Add column based on this column..." auswählen. 
+
+Wir nennen die neue Spalte "lat" und nutzen diese GREL-Expression:
+```GREL
+value.parseJson().results[0].geometry.location.lat
+```
+
+Das gleiche dann nochmal für die Spalte "long" mit dieser GREL-Expression:
+```GREL
+value.parseJson().results[0].geometry.location.lng
+```
