@@ -50,7 +50,7 @@ Im nächsten Schritt müssen wir die Adressen ebenfalls in Lat/Long-Informatione
 
 Es ist relativ einfach, das Ganze mit der Google Maps API zu testen. Allerdings braucht man dafür mittlerweile einen API-Schlüssel. Wie man sich diesen - erstmal kostenlosen -  Schlüssel beschafft, steht hier: https://developers.google.com/maps/documentation/javascript/get-api-key
 
-Zurück in OpenRefine. Diesmal klickt man auf das Drop-Down neben "adresse" und wählt "Edit column" > "Add column by fetching URLs based on column adresse". 
+Zurück in OpenRefine. Diesmal klickt man auf das Drop-Down neben "adresse" und wählt "Edit column" > "Add column by fetching URLs based on column adress". 
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/openrefine2.gif)
 
@@ -85,3 +85,16 @@ Das gleiche dann nochmal für die Spalte "long" mit dieser GREL-Expression:
 ```GREL
 value.parseJson().results[0].geometry.location.lng
 ```
+
+### Reverse Geocoding ###
+
+Da in unserer Karte auch die Adressen der Messorte angezeigt werden sollten, brauchten wir für die Fälle, bei denen es nur Lat/Long-Informationen gab, ein reverse geocoding. Auch das lässt sich mit Open Refine relativ einfach lösen. 
+
+Diesmal klickt man auf das Drop-Down neben "latlong" und wählt "Edit column" > "Add column by fetching URLs based on column adress". 
+
+```GREL
+'https://maps.googleapis.com/maps/api/geocode/json?' +
+'sensor=false&' + 'latlng=' + escape(value, 'url') + '&key=HierStehtDeinGoogleMapsAPIKey'
+```
+
+Die Ausgabe-Spalte kann man z.B. mit "reverse_adresse" benennen. Das Ergebnis ist wieder eine JSON-Rückmeldung vom Google Maps Geocoder.
