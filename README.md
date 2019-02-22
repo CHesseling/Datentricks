@@ -109,3 +109,19 @@ value.parseJson().results[0].address_components[1].long_name
 lässt sich zwar in der Regel die Straße bestimmen - sucht man aber die Stadt, wird es schwierig, da bei manchen Einträgen an der Stelle der Stadtteil und bei anderen die Stadt zu finden ist:
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-22_19h55_38b.png)
+
+Dieses Problem lässt sich in OpenRefine afaik nicht einfach lösen, sondern man muss das ganze z.B. in Python verarbeiten.
+
+Man kann höchstens alle adress_components in einzelne Spalten exrahieren und dann das Problem in Excel lösen. Also:
+```GREL
+value.parseJson().results[0].address_components[0].long_name
+value.parseJson().results[0].address_components[1].long_name
+value.parseJson().results[0].address_components[2].long_name
+value.parseJson().results[0].address_components[3].long_name
+[usw.]
+
+```
+
+## Ein paar Excel-Tricks ##
+
+
