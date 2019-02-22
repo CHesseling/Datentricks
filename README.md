@@ -98,3 +98,14 @@ Diesmal klickt man auf das Drop-Down neben "latlong" und wählt "Edit column" > 
 ```
 
 Die Ausgabe-Spalte kann man z.B. mit "reverse_adresse" benennen. Das Ergebnis ist wieder eine JSON-Rückmeldung vom Google Maps Geocoder.
+
+*Problem:* Normalerweise würde man versuchen, mit dem ähnlichen Codeschnipsel wie bei den Adressen, die relevanten Informationen aus dem JSON zu ziehen.
+
+Mit dem folgenden Code
+```GREL
+value.parseJson().results[0].address_components[1].long_name
+```
+
+lässt sich zwar in der Regel die Straße bestimmen - sucht man aber die Stadt, wird es schwierig, da bei manchen Einträgen an der Stelle der Stadtteil und bei anderen die Stadt zu finden ist:
+
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-22_19h55_38b.png)
