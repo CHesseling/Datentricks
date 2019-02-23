@@ -1,6 +1,6 @@
-# Datentricks
+# Kleiner Werkstattbericht NDR - WasAtmestDu
 
-## Ein paar Tricks und Tipps rund um's Datenputzen ##
+## Ein paar Tricks und Tipps rund um das Thema Datenputzen ##
 
 Für das NDR-Projekt #WasAtmestDu haben wir Menschen in Norddeutschland gebeten, Stickstoffoxid-Sammelröhrchen aufzuhängen. Insgesamt haben sich über 5000 Menschen über ein Online-Forumlar beworben. 
 
