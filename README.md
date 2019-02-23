@@ -134,4 +134,14 @@ Das Ergebnis sieht dann so aus:
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-23_11h49_52.png)
 
-
+Was kann man draus lesen? 
+- Steht in Spalte H der Wert "["locality","political"]", befindet sich der Ortsname in Spalte M
+- Steht in Spalte I der Wert "["locality","political"]", befindet sich der Ortsname in Spalte N
+ 
+ Mit einer Wenn/Dann-Formel in Excel lässt sich jetzt der Ort bestimmen:
+ 
+ ```Excel
+ =WENN(NICHT(ISTFEHLER(SUCHEN("locality";H2)));M2;N2)
+ ```
+ 
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-23_11h59_22.png)
