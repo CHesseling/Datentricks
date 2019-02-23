@@ -127,3 +127,5 @@ value.parseJson().results[0].address_components[3].long_name
 Das Ergebnis sieht dann so aus:
 
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-22_20h17_28.png)
+
+
