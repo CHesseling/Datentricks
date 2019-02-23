@@ -122,10 +122,16 @@ value.parseJson().results[0].address_components[3].long_name
 
 ```
 
+Außerdem kann man extrahieren, um welchen Typ es sich bei [2] und [3] handelt:
+```GREL
+value.parseJson().results[0].address_components[2].types
+value.parseJson().results[0].address_components[3].types
+```
+
 ## Ein paar Excel-Tricks ##
 
 Das Ergebnis sieht dann so aus:
 
-![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-22_20h17_28.png)
+![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-23_11h49_52.png)
 
 
