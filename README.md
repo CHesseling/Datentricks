@@ -8,7 +8,7 @@ In dem Formular wurde nach dem Messort gefragt. Allerdings: Manche Menschen habe
 
 ![Excel-Daten](http://datenjournalismus.eu/github_pics/2019-02-19_09h48_16.png)
 
-Die Beispiel-Datei lässt sich hier herunterladen: [Download]http://www.datenjournalismus.eu/github_pics/openrefine.xlsx
+Die Beispiel-Datei lässt sich hier herunterladen: [Download](http://www.datenjournalismus.eu/github_pics/openrefine.xlsx)
 
 
 Das Ziel: Eine Spalte, in der valide Geo-Informationen stehen. Deshalb müssen zunächst die Adressen von den Lat/Long-Daten getrennt werden. 
