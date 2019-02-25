@@ -1,8 +1,8 @@
 # Kleiner Werkstattbericht NDR - WasAtmestDu
 
-## Ein paar Tricks und Tipps rund um das Thema Datenputzen ##
+## Ein paar Tricks rund um das Thema Datenputzen ##
 
-Für das NDR-Projekt #WasAtmestDu haben wir Menschen in Norddeutschland gebeten, Stickstoffoxid-Sammelröhrchen aufzuhängen. Insgesamt haben sich über 5000 Menschen über ein Online-Forumlar beworben. 
+Für das NDR-Projekt #WasAtmestDu (https://www.ndr.de/fernsehen/sendungen/45_min/Die-groesste-Luft-Messaktion-im-Norden,luft132.html) haben wir Menschen in Norddeutschland gebeten, Stickstoffoxid-Sammelröhrchen aufzuhängen. Insgesamt haben sich über 5000 Menschen über ein Online-Forumlar beworben. 
 
 In dem Formular wurde nach dem Messort gefragt. Allerdings: Manche Menschen haben dort eine Adresse eingegeben, andere Geo-Koordinaten. Das sah dann so aus (die Adressdaten wurden von mir für dieses Tutorial anonymisiert).
 
@@ -152,4 +152,35 @@ Was kann man draus lesen?
 ![OpenRefine](http://datenjournalismus.eu/github_pics/2019-02-23_11h59_22.png)
 
 
-* ...to be continued *
+### Röhrchennummern korrigieren ###
+
+Die Röhrchen wurden in mehreren Runden ausgewertet, das Labor hat uns mehrere Excel-Listen geschickt. Allerdings waren die IDs der Röhrchen teilweise unterschiedliche formatiert: Mal als Zahl, mal als Röhrchennummer (z.B. "DNDR0021").
+
+Auch das lässt sich z.B. in Excel korrgieren:
+
+![Excel](http://datenjournalismus.eu/github_pics/2019-02-25_08h58_26.png)
+
+Das kann man in einer einzigen Formel machen, aber damit man die bessere Übersicht behält, empfehle ich das Ganze in mehreren Schritten zu tun.
+
+Mit der Formel 
+ ```Excel
+=TEXT(A2;"0000")
+ ```
+ in Zelle B2 wird aus der Zahl ein vierstelliger Text (der so aussieht wie eine Zahl).
+ 
+ In C2 kann man den Text aus B2 nun mit dem Röhrchencode DNDR verketten:
+  ```Excel
+ =VERKETTEN("DNDR";B2)
+  ```
+  
+  Und schließlich kann man in D2 abfragen, ob man den Wert aus A2 oder C2 nimmt:
+  ```Excel
+  =WENN((ISTZAHL(A2));C2;A2)
+  ```
+  
+  Voilà:
+  
+![Excel](http://datenjournalismus.eu/github_pics/2019-02-25_09h02_14.png)
+
+
+*to be continued*
